@@ -1,5 +1,6 @@
 // Write a function called bubbleSort
 // Which takes in an array and returns the sorted ascending/numeric order of it
+// General time complexity is O(n^2) [It also depends if it's somewhat sorted, might change.]
 
 function bubbleSort(arr) {
     let noSwaps;
@@ -32,16 +33,20 @@ console.log(bubbleSort([25,14,8,37,45])); // [8,14,25,37,45]
 
 /* 
 function bubbleSort(arr) {
+    let noSwaps;
     const swap = (arr, idx1, idx2) => {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
     };
 
     for (let i = arr.length; i > 0; i--) {
+        noSwaps = true;
         for (let j = 0; j < i - 1; j++) {
             if (arr[j] > arr[j+1]) {
                 swap (arr, j, j+1);
+                noSwaps = false;
             }
         }
+        if(noSwaps) break;
     }
 }
 */
