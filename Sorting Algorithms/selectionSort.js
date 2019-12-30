@@ -1,6 +1,7 @@
 // Write a function called selectionSort()
 // Takes an array, and returns sorted array
 // Selection Sort finds a minimum, swaps at the end of loop and put it at the beginning
+// O(n^2)
 
 function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
