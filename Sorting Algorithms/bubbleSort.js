@@ -1,6 +1,8 @@
 // Write a function called bubbleSort
 // Which takes in an array and returns the sorted ascending/numeric order of it
 // General time complexity is O(n^2) [It also depends if it's somewhat sorted, might change.]
+// Works well with somewhat sorted data, possibly O(n)
+// Space: O(1)
 
 function bubbleSort(arr) {
     let noSwaps;

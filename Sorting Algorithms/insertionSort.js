@@ -2,7 +2,9 @@
 // Takes an array, and returns sorted array
 // For Insertion Sort, you compare the [0] and [1] and sort if necessary
 // Then after, if the next element is in the incorrect order, always iterate it through the sorted portion of the array
-// Worst case: O(n^2) [4,3,2,1] (because remember it will sort ascending)
+// Worst case: O(n^2) [4,3,2,1]
+// Works well with somewhat sorted data: [1,2,3,5,4] O(n)
+// Space: O(1)
 // Good case: Because we keep one side of it alredy sorted, if there's an input/live algorithm that needs to be sorted then insertion sort can be effective.
 // p.s. pay attention to use of "var" for scoping rules
 
