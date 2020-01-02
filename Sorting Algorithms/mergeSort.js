@@ -2,7 +2,7 @@
 // Which accepts two arrays, and returns the sorted array
 // For merge sort, you split the array into smaller arrays of 0 or 1 -> sort them -> merge back together
 
-function mergeSort(arr1, arr2) {
+function mergeArray(arr1, arr2) {
     let results = [];
     let i = 0;
     let j = 0;
@@ -33,4 +33,14 @@ function mergeSort(arr1, arr2) {
     return results;
 }
 
-console.log(mergeSort([1,10,50], [2,14,99,100])); // [1,2,10,14,50,99,100]
+function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+    // Keep splitting up the arrays until the length is 0 or 1
+    let mid = Math.floor(arr.length/2); // halfway point
+    let left = mergeSort(arr.slice(0,mid)); // beginning to mid
+    let right = mergeSort(arr.slice(mid)); // mid till the end
+    // Now to merge it back
+    return mergeArray(left, right);
+}
+
+console.log(mergeSort([1,10,50,2,14,99,100])); // [1,2,10,14,50,99,100]
