@@ -2,6 +2,7 @@
 // Which accepts two arrays, and returns the sorted array
 // For quick sort: split -> sort -> merge. 
 // For quick sort you must pick a pivot element, and place all lesser numbers to the left, and all greater numbers to the right.
+// Time: O(n log n) Space: O(log n)
 
 function pivot(arr, start=0, end=arr.length-1) {
     function swap(array, i, j) {
@@ -42,4 +43,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
     return arr;
 }
 
-console.log(pivot([4,8,2,1,5,7,6,3])); // Picking '4' should return index of 3
+console.log(quickSort([4,8,2,1,5,7,6,3])); // [1,2,3,4,5,6,7,8]
+
+// This problem was solved using the first element, which could lead to O(n^2) time
+// Another good idea is to start from the middle to avoid that
