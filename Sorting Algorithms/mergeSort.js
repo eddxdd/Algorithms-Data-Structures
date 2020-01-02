@@ -1,6 +1,7 @@
 // Write a function called mergeSort()
 // Which accepts two arrays, and returns the sorted array
 // For merge sort, you split the array into smaller arrays of 0 or 1 -> sort them -> merge back together
+// Time: O(n log n) Space: O(n)
 
 function mergeArray(arr1, arr2) {
     let results = [];
