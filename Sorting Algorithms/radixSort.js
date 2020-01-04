@@ -1,6 +1,7 @@
 // Define a function that accepts a list of numbers
 // Figure out how many digits the largest number has
 // Loop from k = 0 up to largest number of digits
+// Time: O(nk) Space: O(n + k) // n = length of array & k = number of digits (average).
 
 function getDigit(num, i) {
     // Math.abs returns the absolute val of a number
