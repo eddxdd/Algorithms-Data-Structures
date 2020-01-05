@@ -34,3 +34,6 @@ class Student {
 let firstStudent = new Student("Colt", "Steele",1);
 let secondStudent = new Student("Blue", "Steele",2);
 
+//console.log(firstStudent.addScore(98));
+//console.log(firstStudent.addScore(76));
+//console.log(firstStudent.calculateAverage());
