@@ -31,13 +31,16 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
-    traverse() {
+    pop() {
+        if(!this.head) return undefined;
         var current = this.head;
-        // This loop runs while there is a next
-        while(current) {
-            console.log(current.val);
-            current = current.next;
+        var newTail = current;
+        // do this while there's a next current
+        while(current.next) {
+            newTail = current; 
+            current = current.next; // move current one after newTail
         }
+        this.tail = newTail;
     }
 }
 
