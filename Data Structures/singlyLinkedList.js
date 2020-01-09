@@ -1,4 +1,10 @@
 // "push" insert at the end
+// If there are no nodes in the list, return undefined
+// Loop through the list until you reach the tail
+// Set the next property of the 2nd to last node to be null
+// Set the tail to be the 2nd to last node
+// Decrement the length of the list by 1
+// Return the value of the node removed
 
 class Node{
     constructor(val){
@@ -37,10 +43,13 @@ class SinglyLinkedList{
         var newTail = current;
         // do this while there's a next current
         while(current.next) {
-            newTail = current; 
+            newTail = current; // newTail is always one behind current
             current = current.next; // move current one after newTail
         }
         this.tail = newTail;
+        this.tail.next = null; // This is to sever the connection to current.next
+        this.length--;
+        return current;
     }
 }
 
