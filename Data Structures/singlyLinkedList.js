@@ -1,60 +1,47 @@
-// "push" insert at the end
-// If there are no nodes in the list, return undefined
-// Loop through the list until you reach the tail
-// Set the next property of the 2nd to last node to be null
-// Set the tail to be the 2nd to last node
-// Decrement the length of the list by 1
-// Return the value of the node removed
+// What is it? It's a data structure that contains a head, tail and length property.
+// Linked Lists consists of nodes, and each node has a value and a pointer to another node or NULL.
+// Good for insertion and deletion. But random access [] is not allowed. You must traverse every node.
 
-class Node{
-    constructor(val){
+
+// node: stores a piece of data (val) - and makes a reference to next node
+// Initialize next = null; 
+// Because in the beginning, there's nothing after it.
+class Node {
+    constructor(val) {
         this.val = val;
         this.next = null;
     }
 }
 
-class SinglyLinkedList{
-    constructor(){
+class SinglyLinkedList {
+    constructor() {
+        // In the beginning
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-    push(val){
+    // Create a new node and assign it to the head of the list
+    // push: insert at end
+    // For the first time, both head and tail will be the same. After, it should add to current tail.
+    push(val) {
         var newNode = new Node(val);
-        // If there's no head property on the list, set the head and tail to be the newly created node
-        // "If it's an empty list" point it to newNode
-        if(!this.head){
+        // "If it's an empty list"
+        // head/tail point to the same
+        if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
         } else {
-            // Otherwise, take the next property of the current tail and set it to newNode
-            // ex: HELLO GOODBYE
+            // Else, take current tail, add to it, and move to the new node
             this.tail.next = newNode;
-            // Then update this.tail to newNode (now the new tail)
             this.tail = newNode;
         }
-        // Increment length by one
         this.length++;
         return this;
     }
-    pop() {
-        if(!this.head) return undefined;
-        var current = this.head;
-        var newTail = current;
-        // do this while there's a next current
-        while(current.next) {
-            newTail = current; // newTail is always one behind current
-            current = current.next; // move current one after newTail
-        }
-        this.tail = newTail;
-        this.tail.next = null; // This is to sever the connection to current.next
-        this.length--;
-        return current;
-    }
 }
 
-var list = new SinglyLinkedList()
-// list.push("1")
-// list.push("2")
-// list.push("3)
-// list.push("4")
+// This is so we can add it to the end of the list
+var list = new SinglyLinkedList();
+
+console.log(list.push("HELLO"));
+console.log(list.push("GOODBYE"));
