@@ -1,6 +1,7 @@
 // What is it? It's a data structure that contains a head, tail and length property.
 // Linked Lists consists of nodes, and each node has a value and a pointer to another node or NULL.
 // Good for insertion and deletion. But random access [] is not allowed. You must traverse every node.
+// (HEAD) -> (NODE) -> (NODE) ... -> (TAIL)
 
 
 // node: stores a piece of data (val) - and makes a reference to next node
@@ -70,6 +71,11 @@ class SinglyLinkedList {
             this.tail = null;
         }
         return current; // 6.
+    }
+
+    // shift() pseudocode: remove at the beginning
+    shift() {
+        
     }
 }
 
