@@ -20,9 +20,12 @@ class SinglyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    // Create a new node and assign it to the head of the list
-    // push: insert at end
-    // For the first time, both head and tail will be the same. After, it should add to current tail.
+    // push pseudo-code: insert at end
+    // This function should accept a value
+    // Create a new node using the value passed to the function
+    // If there is no head property on the list, set the head and tail to be the newly created node
+    // Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
+    // Increment the length by one
     push(val) {
         var newNode = new Node(val);
         // "If it's an empty list"
@@ -37,6 +40,14 @@ class SinglyLinkedList {
         }
         this.length++;
         return this;
+    }
+    pop() {
+        if(!this.head) return undefined;
+        var current = this.head;
+        var newTail = current;
+        while (current.next) {
+
+        }
     }
 }
 
