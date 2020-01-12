@@ -112,6 +112,16 @@ class SinglyLinkedList {
     // 3. Loop through the list until you reach the index and return the node at that specific index
     get(index) {    // 1.
         if (index < 0 || index >= this.length) return null; // 2.
+        var counter = 0;
+        var current = this.head;
+        // Imagine you want to get index at 3
+        // current moves up each time through, while it adds +1 to counter
+        // When counter === 3, we're finished.
+        while (counter !== index) { // 3.
+            current = current.next;
+            counter++;
+        }
+        return current;
     }
 }
 
@@ -119,6 +129,9 @@ class SinglyLinkedList {
 var list = new SinglyLinkedList();
 
 list.push("HELLO");
+list.push("TO");
+list.push("YOU");
+list.push("AND");
 list.push("GOODBYE");
 list.push("!!");
-console.log(list.unshift("TEST"));
+console.log(list.get(3));
