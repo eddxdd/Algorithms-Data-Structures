@@ -106,6 +106,13 @@ class SinglyLinkedList {
         this.length++;  // 6.
         return this;    // 7.
     }
+    // get() pseudocode: retrieve a node by it's position in the Linked List
+    // 1. This function should accept an index
+    // 2. If the index is < 0 or >= length of the list, return null
+    // 3. Loop through the list until you reach the index and return the node at that specific index
+    get(index) {    // 1.
+        if (index < 0 || index >= this.length) return null; // 2.
+    }
 }
 
 // This is so we can add it to the end of the list
