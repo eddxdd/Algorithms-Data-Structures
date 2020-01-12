@@ -20,29 +20,40 @@ class SinglyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    // push pseudo-code: insert at end
-    // This function should accept a value
-    // Create a new node using the value passed to the function
-    // If there is no head property on the list, set the head and tail to be the newly created node
-    // Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
-    // Increment the length by one
-    push(val) {
-        var newNode = new Node(val);
+    // push() pseudocode: insert at end
+    // 1. This function should accept a value
+    // 2. Create a new node using the value passed to the function
+    // 3. If there is no head property on the list, set the head and tail to be the newly created node
+    // 4. Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
+    // 5. Increment the length by one
+    // 6. Return the linked list
+    push(val) { // 1.
+        var newNode = new Node(val);    // 2.
         // "If it's an empty list"
-        // head/tail point to the same
+        // 3. head/tail point to the same
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
         } else {
-            // Else, take current tail, add to it, and move to the new node
+            // 4. Else, take current tail, add to it, and move to the new node
             this.tail.next = newNode;
             this.tail = newNode;
         }
-        this.length++;
-        return this;
+        this.length++;  // 5.
+        return this;    // 6.
     }
+    // pop() pseudocode: remove at end
+    // 1. If there are no nodes in the list, return undefined
+    // 2. Loop through the list until you reach the tail
+    // 3. Set the next property of the 2nd to last node to be null
+    // 4. Set the tail to be the 2nd to last node
+    // 5. Decrement the length of the list by 1
+    // 6. Return the value of the node removed
     pop() {
-        if(!this.head) return undefined;
+        if(!this.head) return undefined;    // 1.
+        // Here we keep 2 variables, current tracks ahead and newTail lags 1 behind (in the beginning they're the same)
+        // So that current can reach the end first and pop()
+        // And newTail can become the new tail
         var current = this.head;
         var newTail = current;
         while (current.next) {
