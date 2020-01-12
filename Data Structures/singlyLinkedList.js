@@ -21,7 +21,7 @@ class SinglyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    // push() pseudocode: insert at end
+    // push() pseudocode: inserts a node at end of the list
     // 1. This function should accept a value
     // 2. Create a new node using the value passed to the function
     // 3. If there is no head property on the list, set the head and tail to be the newly created node
@@ -43,7 +43,7 @@ class SinglyLinkedList {
         this.length++;  // 5.
         return this;    // 6.
     }
-    // pop() pseudocode: remove at end
+    // pop() pseudocode: removes a node at end of the list
     // 1. If there are no nodes in the list, return undefined
     // 2. Loop through the list until you reach the tail
     // 3. Set the tail to be the 2nd to last node
@@ -72,10 +72,39 @@ class SinglyLinkedList {
         }
         return current; // 6.
     }
-
-    // shift() pseudocode: remove at the beginning
+    // shift() pseudocode: removes a node at the beginning of the list
+    // Always constant time when compared to array
+    // 1. If there are no nodes, return undefined
+    // 2. Store the current head property in a variable
+    // 3. Set the head property to be the current head's next property
+    // 4. Decrement the length by 1
+    // 5. Return the value of the node removed
     shift() {
-        
+        if (!this.head) return undefined;
+        var currentHead = this.head;    // 2.
+        this.head = currentHead.next;   // 3.
+        this.length--;  // 4.
+        return currentHead; // 5.
+    }
+    // unshift() pseudocode: adds a node at the beginning of the list
+    // 1. This function should accept a value
+    // 2. Create a new node using the value passed to the function
+    // 3. If there is no head property on the list, set the head and tail to be the newly created node
+    // 4. Otherwise set the newly created node's next property to be the current head property on the list
+    // 5. Set the head property on the list to be that newly created node
+    // 6. Increment the length of the list by 1
+    // 7. Return the linked list
+    unshift(val) {  // 1.
+        var newNode = new Node(val);    // 2.
+        if (!this.head) {    // 3.
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            newNode.next = this.head;   // 4.
+            this.head = newNode;    // 5.
+        }
+        this.length++;  // 6.
+        return this;    // 7.
     }
 }
 
@@ -85,4 +114,4 @@ var list = new SinglyLinkedList();
 list.push("HELLO");
 list.push("GOODBYE");
 list.push("!!");
-console.log(list.pop());
+console.log(list.unshift("TEST"));
