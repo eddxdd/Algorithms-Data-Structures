@@ -45,8 +45,8 @@ class SinglyLinkedList {
     // pop() pseudocode: remove at end
     // 1. If there are no nodes in the list, return undefined
     // 2. Loop through the list until you reach the tail
-    // 3. Set the next property of the 2nd to last node to be null
-    // 4. Set the tail to be the 2nd to last node
+    // 3. Set the tail to be the 2nd to last node
+    // 4. Set the next property of the 2nd to last node to be null (so it no longer points at next)
     // 5. Decrement the length of the list by 1
     // 6. Return the value of the node removed
     pop() {
@@ -56,14 +56,27 @@ class SinglyLinkedList {
         // And newTail can become the new tail
         var current = this.head;
         var newTail = current;
-        while (current.next) {
-
+        while (current.next) {  // 2. While there is a next
+            newTail = current;
+            current = current.next;
         }
+        this.tail = newTail;    // 3.
+        this.tail.next = null; // 4.
+        this.length--;  // 5.
+        // If there was one last item, and we pop()
+        // Reset the head and tail to null
+        if (this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
+        return current; // 6.
     }
 }
 
 // This is so we can add it to the end of the list
 var list = new SinglyLinkedList();
 
-console.log(list.push("HELLO"));
-console.log(list.push("GOODBYE"));
+list.push("HELLO");
+list.push("GOODBYE");
+list.push("!!");
+console.log(list.pop());
