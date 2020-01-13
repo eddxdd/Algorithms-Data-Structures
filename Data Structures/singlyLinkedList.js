@@ -123,6 +123,31 @@ class SinglyLinkedList {
         }
         return current;
     }
+    // set() pseudocode: change the value of a node based on it's position in the Linked List
+    // 1. This function should accept a value and an index
+    // 2. Use the get() function to find the specific node
+    // 3. If the node is found, set the value of that node to be the value passed to the function and return true
+    // 4. If the node is not found, return false
+    set(index, val) {   // 1.
+        var foundNode = this.get(index);    // 2.
+        if (foundNode) {    // 3.
+            foundNode.val = val;
+            return true;
+        }
+        return false;   // 4.
+    }
+    // insert() pseudocode: adding a node to the linked list at a specific position
+    // 1. If the index is less than zero or greater than the length, return false
+    // 2. If the index is the same as the length, push a new node to the end of the list
+    // 3. If the index is 0, unshift a new node to the start of the list
+    // 4. Otherwise, use the get() method to access the node at the index - 1
+    // 5. Set the next property on that node to be the new node
+    // 6. Set the next property on the new node to be the previous next
+    // 7. Increment the length
+    // 8. Return true
+    insert() {
+        
+    }
 }
 
 // This is so we can add it to the end of the list
