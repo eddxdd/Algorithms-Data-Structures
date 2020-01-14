@@ -145,8 +145,18 @@ class SinglyLinkedList {
     // 6. Set the next property on the new node to be the previous next
     // 7. Increment the length
     // 8. Return true
-    insert() {
-        
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false; // 1.
+        if (index === this.length) return this.push(val);   // 2. (Best just use push and unshift if you want to insert at end/beginning)
+        if (index === 0) return this.unshift(val);  // 3. 
+        var newNode = new Node(val);    // 5.
+        var prev = this.get(index - 1); // 4.
+        // 6.
+        var temp = prev.next;   
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;  // 7.
+        return true;
     }
 }
 
