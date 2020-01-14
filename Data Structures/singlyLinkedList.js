@@ -148,7 +148,7 @@ class SinglyLinkedList {
     insert(index, val) {
         if (index < 0 || index > this.length) return false; // 1.
         if (index === this.length) return !!this.push(val);   // 2. (Best just use push and unshift if you want to insert at end/beginning)
-        if (index === 0) return !!this.unshift(val);  // 3. 
+        if (index === 0) return !!this.unshift(val);  // 3. double negatives 
         
         var newNode = new Node(val);    // 5.
         var prev = this.get(index - 1); // 4.
@@ -170,4 +170,4 @@ list.push("YOU");
 list.push("AND");
 list.push("GOODBYE");
 list.push("!!");
-console.log(list.get(3));
+console.log(list.insert(-6, "hi"));
