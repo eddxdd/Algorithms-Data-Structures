@@ -159,6 +159,17 @@ class SinglyLinkedList {
         this.length++;  // 7.
         return true;
     }
+    // remove() pseudocode: removing a node from the Linked List at a specific position
+    // If the index is less than zero or greater than the length, return undefined
+    // If the index is the same as the length - 1, pop()
+    // If the index is 0, shift()
+    // Otherwise, using the get() method, access the node at the index - 1
+    // Set the next property on that node to be the next of the next node
+    // Decrement the length
+    // Return the value of the node removed
+    remove() {
+        
+    }
 }
 
 // This is so we can add it to the end of the list
