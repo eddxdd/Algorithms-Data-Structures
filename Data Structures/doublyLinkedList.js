@@ -25,7 +25,7 @@ class DoublyLinkedList {
     // 6. Increment the length
     // 7. Return the DLL
     push(val) {
-        var newNode = newNode(val); // 1.
+        var newNode = new Node(val); // 1.
         // 2.
         if (this.length === 0) {
             this.head = newNode;
@@ -47,7 +47,19 @@ class DoublyLinkedList {
     // 6. Decrement the length
     // 7. Return the value removed
     pop() {
-        
+        if (!this.head) return undefined;    // 1.
+        var poppedNode = this.tail; // 2.
+        // 3.
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = poppedNode.prev;    // 4.
+            this.tail.next = null;  // 5.
+            poppedNode.prev = null;
+        }
+        this.length--;  // 6.
+        return poppedNode;  // 7.
     }
 }
 
@@ -59,4 +71,4 @@ list.push("25");
 list.push("50");
 list.push("75");
 list.push("100");
-console.log(list.print());
+console.log(list.pop());
