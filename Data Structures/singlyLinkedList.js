@@ -178,6 +178,41 @@ class SinglyLinkedList {
         this.length--;  // 6.
         return removed; // 7.
     }
+    // reverse() pseudocode: reverse the Linked List in place
+    // 1. Create a variable called node and initialize it to the head property
+    // 2. Swap the head and tail
+    // 3. Create a variable called next
+    // 4. Create a variable called prev
+    // 5. Loop through the list
+    // 6. Set next to be the next property on whatever node is
+    // 7. Set the next property on the node to be whatever prev is
+    // 8. Set prev to be the value of the node variable
+    // 9. Set the node variable to be the value of the next variable
+    reverse() {
+        var node = this.head;   // 1.
+        // 2.
+        this.head = this.tail;
+        this.tail = node;
+        var next;   // 3.
+        var prev = null;    // 4. In the beginning, prev is null because there's nothing in front <-
+        // 5.
+        for (var i = 0; i < this.length; i++) {
+            next = node.next;   // 6.
+            node.next = prev;   // 7.
+            prev = node;    // 8.
+            node = next;    // 9.
+        }
+        return this;
+    }
+    print() {
+        var arr = [];
+        var current = this.head;
+        while (current) {
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
 }
 
 // This is so we can add it to the end of the list
@@ -189,4 +224,6 @@ list.push("YOU");
 list.push("AND");
 list.push("GOODBYE");
 list.push("!!");
-console.log(list.insert(-6, "hi"));
+console.log(list.print());
+console.log(list.reverse());
+console.log(list.print());
