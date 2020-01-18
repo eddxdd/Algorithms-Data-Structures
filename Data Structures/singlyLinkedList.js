@@ -160,15 +160,23 @@ class SinglyLinkedList {
         return true;
     }
     // remove() pseudocode: removing a node from the Linked List at a specific position
-    // If the index is less than zero or greater than the length, return undefined
-    // If the index is the same as the length - 1, pop()
-    // If the index is 0, shift()
-    // Otherwise, using the get() method, access the node at the index - 1
-    // Set the next property on that node to be the next of the next node
-    // Decrement the length
-    // Return the value of the node removed
-    remove() {
-        
+    // 1. If the index is less than zero or greater than the length, return undefined
+    // 2. If the index is 0, shift()
+    // 3. If the index is the same as the length - 1, pop()
+    // 4. Otherwise, using the get() method, access the node at the index - 1
+    // 5. Set the next property on that node to be the next of the next node
+    // 6. Decrement the length
+    // 7. Return the value of the node removed
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined;    // 1.
+        if (index === 0) return this.shift();   // 2.
+        if (index === this.length - 1) return this.pop();   // 3.
+        var previousNode = this.get(index - 1); // 4. (retrieve one before where we would like to remove)
+        // 5.
+        var removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;  // 6.
+        return removed; // 7.
     }
 }
 
