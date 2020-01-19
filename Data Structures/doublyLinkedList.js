@@ -149,6 +149,33 @@ class DoublyLinkedList {
         }
         return false;   // 3.
     }
+    // insert() pseudocode: add a node in a DLL by a certain position
+    // 1. If the index is < 0 or >= this.length, return false
+    // 2. If the index is 0, unshift()
+    // 3. If the index is the same as the length, push()
+    // 4. Use the get() method to access the index - 1 (because you need to find the previous node first, to then insert at after)
+    // 5. Set the next and prev properties on the correct nodes to link everything together
+    // 6. Increment the length
+    // 7. Return true
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false; // 1.
+        if (index === 0) return !!this.unshift(val);    // 2. // !! to coerce it into a boolean
+        if (index === this.length) return !!this.push(val); // 3.
+
+        var newNode = new Node(Val);
+        var prevNode = this.get(index-1);   // 4.
+        var nextNode = prevNode.next;
+
+        // 5.
+        prevNode.next = newNode, newNode.prev = prevNode;
+        newNode.next = nextNode, nextNode.previous = newNode;
+        this.length++;  // 6.
+        return true;    // 7.
+    }
+    // remove() pseudocode: remove a node in a DLL by a certain position
+    remove() {
+        
+    }
 }
 
 var list = new DoublyLinkedList();
