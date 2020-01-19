@@ -84,6 +84,39 @@ class DoublyLinkedList {
         this.length--;  // 6.
         return oldHead; // 7.
     }
+    // unshift() pseudocode: add to the beginning
+    // 1. Create a new node with the value passed to the function
+    // 2. If the length is 0, set the head/tail to be the new node
+    // 3. Otherwise, set the prev property on the head of the list to be the new node
+    // Set the next property on the new node to be the head property
+    // Update the head to be the new node
+    // 4. Increment the length
+    // 5. Return the list
+    unshift(val) {
+        var newNode = new Node(val);    // 1.
+        // 2.
+        if (this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {    // 3.
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;  // 4.
+        return this;    // 5.
+    }
+    // get() pseudocode: access a node by its position
+    // 1. If the index is less than 0 or greater or equal to the length, return null
+    // 2. If the index is less than or equal to half the length of the list
+    // Loop through the list starting from the head and loop towards the middle
+    // Return the node once its found
+    // 3. If the index is greater than half the length of the list
+    // Loop through the list starting from the tail and loop towards the middle
+    // Return the node once its found
+    get() {
+        
+    }
 }
 
 var list = new DoublyLinkedList();
