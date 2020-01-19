@@ -158,7 +158,7 @@ class DoublyLinkedList {
     // 6. Increment the length
     // 7. Return true
     insert(index, val) {
-        if (index < 0 || index > this.length) return false; // 1.
+        if (index < 0 || index >= this.length) return false; // 1.
         if (index === 0) return !!this.unshift(val);    // 2. // !! to coerce it into a boolean
         if (index === this.length) return !!this.push(val); // 3.
 
@@ -173,7 +173,27 @@ class DoublyLinkedList {
         return true;    // 7.
     }
     // remove() pseudocode: remove a node in a DLL by a certain position
-    remove() {
+    // 1. If the index is < 0 or >= this.length, return undefined
+    // 2. If the index is 0, shift()
+    // 3. If the index is the same as the length - 1, pop()
+    // 4. Use the get() method to retrieve the item to be removed
+    // 5. Update the next and prev properties to remove the found node from the list
+    // 6. Set next and prev to null on the found node
+    // 7. Decrement the length
+    // 8. Return the removed node
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined; // 1.
+        if (index === 0) return this.shift();    // 2.
+        if (index === this.length) return this.pop(); // 3.
+        var removedNode = this.get(index);  // 4.
+        // 5. (Same as insert() 5. but written in a different way, could use either)
+        removedNode.prev.next = removedNode.next;
+        removedNode.next.prev = removedNode.prev;
+        // 6.
+        removedNode.next = null;
+        removedNode.prev = null;
+        this.length--;  // 7.
+        return removedNode; // 8.
         
     }
 }
