@@ -115,8 +115,9 @@ class DoublyLinkedList {
     // Loop through the list starting from the tail and loop towards the middle
     // Return the node once its found
     get(index) {
-        if (index < 0 || index >= this.length) return null;
+        if (index < 0 || index >= this.length) return null; // 1.
         var count, current;
+        // 2.
         if (index <= this.length/2) {
             count = 0;
             current = this.head;
@@ -124,7 +125,7 @@ class DoublyLinkedList {
                 current = current.next;
                 count++;
             }
-        } else {
+        } else {    // 3.
             count = this.length - 1;
             current = this.tail;
             while (count !== index) {
@@ -133,6 +134,20 @@ class DoublyLinkedList {
             }
         }
         return current;
+    }
+    // set() pseudocode: replace the value of a node with a new value
+    // 1. Create a variable which is the result of the get() method at the index passed to the function
+    // If the get() method returns a valid node, set the value of that node to be the value passed to the function
+    // Return true
+    // 2. Otherwise, return false
+    set(index, val) {
+        var foundNode = this.get(index);    // 1.
+        // 2.
+        if (foundNode != null) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;   // 3.
     }
 }
 
