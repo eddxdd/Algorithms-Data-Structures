@@ -1,4 +1,6 @@
 // Stacks are a LIFO Data Structure (Last In, First Out)
+// Used in: undo/redo, routing, etc
+// * Not a built-in DS in JavaScript
 
 class Node {
     constructor() {
