@@ -15,7 +15,6 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-
     // insert() pseudocode
     // 1. Create a new node
     // 2. Starting at the root ->
@@ -29,7 +28,6 @@ class BinarySearchTree {
     // 4a. Check to see if there is a node to the right
     // 4b. If there is not, add that node as the right property
     // 4c. If there is, move to that node and repeat these steps
-
     insert(value) {
         var newNode = new Node(value);  // 1.
         // 2a.
@@ -59,6 +57,35 @@ class BinarySearchTree {
                 }
             }
         }
+    }
+    // search() pseudocode
+    // Starting at the root
+    // 1. Check if there is a root, if not, we're done searching
+    // 2. If there is a root, check if the value of the new node is the value we are looking for. If we found it, we're done.
+    // 3. If not, check to see if the value is greater than or less than the value of the root
+    // 4. If its less
+    // 4a. Check to see if there is a node to the left
+    // 4b. If there is, move to that node and repeat these steps
+    // If there is not, we're done searching
+    // 5. If its greater
+    // 5a. Check to see if there is a node to the right
+    // 5b. If there is, move to that node and repeat these steps
+    // If there is not, we're done searching
+    search(value) {
+        if (this.root === null) return false;
+        var current = this.root;
+        var found = false;
+        while (current && !found) {
+            if (value < current.value ) {
+                current = current.left;
+            } else if (value > current.value) {
+                current = current.right;
+            } else {
+                found = true;
+            }
+        }
+        if (!found) return undefined;
+        return current;
     }
 }
 
