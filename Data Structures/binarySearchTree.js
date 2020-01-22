@@ -87,14 +87,39 @@ class BinarySearchTree {
         if (!found) return undefined;
         return current;
     }
+    // BFS() pseudocode: visit every single node, from root, moving across the tree ->
+    // 1. Create a queue (this can be an array) and a variable to store the values of nodes visited
+    // 2. Place the root node in the queue
+    // 3. Loop as long as there is something in the queue
+    // 4. Dequeue a node from the queue and push the value of the node into the variable that stores the nodes
+    // 5. If there is a left property on the node dequeued - add it to the queue
+    // 6. If there is a right property on the node dequeued - add it to the queue
+    // 7. Return the variable that stores the values
+    BFS() {
+        // 1.
+        var node = this.root;
+        var data = [];
+        var queue = [];
+        queue.push(node);  // 2.
+        while (queue.length) { // 3. we do queue.length because ![] is false. But ![].length is true
+            // 4.
+            node = queue.shift();
+            data.push(node);    // use (node.value) for better readability on console, if you want.
+            if (node.left) queue.push(node.left);   // 5.
+            if (node.right) queue.push(node.right); // 6.
+        }
+        return data;    // 7.
+    }
+    // DFS() - PreOrder pseudocode: traverse left side first, then right side
 }
 
 var tree = new BinarySearchTree();
 
-console.log(tree.insert(10));
-console.log(tree.insert(5));
-console.log(tree.insert(15));
-console.log(tree.insert(12));
-console.log(tree.insert(2));
-console.log(tree.insert(18));
-console.log(tree.insert(20));
+tree.insert(10);
+tree.insert(6);
+tree.insert(15);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
+
+console.log(tree.BFS());
