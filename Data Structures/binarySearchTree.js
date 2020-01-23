@@ -118,6 +118,7 @@ class BinarySearchTree {
     // 3b. If the node has a left property, call the helper function with the left property on the node
     // 3c. If the node has a right property, call the helper function with the right property on the node
     // 4. Invoke the helper function with the current variable
+    // 5. Return the array of values
     DFSPreOrder() {
         var data = [];  // 1.
         var current = this.root;    // 2. (not necessary, but setting a current allows you to specify another node to start from if you want)
@@ -127,8 +128,29 @@ class BinarySearchTree {
             if (node.left) traverse(node.left); // 3b.
             if (node.right) traverse(node.right);   // 3c.
         }
-        traverse(current);
-        return data;
+        traverse(current);  // 4.
+        return data;    // 5.
+    }
+    // DFSPostOrder() pseudocode: traverse all the children first (left then right), before the parent [3,8,6,20,15,10]
+    // 1. Create a variable to store the values of nodes visited
+    // 2. Store the root of the BST in a variable called current
+    // 3. Write a helper function which accepts a node
+    // 3a. If the node has a left property, call the helper function with the left property on the node
+    // 3b. If the node has a right property, call the helper function with the right property on the node
+    // 3c. Push the value of the node to the variable that stores the values
+    // 4. Invoke the helper function with the current variable
+    // 5. Return the array of values
+    DFSPostOrder() {
+        var data = [];  // 1.
+        var current = this.root;    // 2. (not necessary, but setting a current allows you to specify another node to start from if you want)
+        // 3.
+        function traverse(node) {
+            if (node.left) traverse(node.left); // 3a.
+            if (node.right) traverse(node.right);   // 3b.
+            data.push(node);    // 3c.
+        }
+        traverse(current);  // 4.
+        return data;    // 5.
     }
 }
 
