@@ -3,6 +3,11 @@
 // Binary Tree/Binary Search Tree (BST): Max 2 nodes per node
 // BST: Sorted (any node that is less than the parent is to the left, any node that is higher is to the right)
 
+// To help visualize the tree:
+//        10
+//    6       15
+//  3   8       20
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -148,6 +153,27 @@ class BinarySearchTree {
             if (node.left) traverse(node.left); // 3a.
             if (node.right) traverse(node.right);   // 3b.
             data.push(node);    // 3c.
+        }
+        traverse(current);  // 4.
+        return data;    // 5.
+    }
+    // DFSInOrder() pseudocode: traverse one side, push the value, then traverse the other side. [3,6,8,10,15,20] *notice its sorted*
+    // 1. Create a variable to store the values of nodes visited
+    // 2. Store the root of the BST in a variable called current
+    // 3. Write a helper function which accepts a node
+    // 3a. If the node has a left property, call the helper function with the left property on the node
+    // 3b. Push the value of the node to the variable that stores the values
+    // 3c. If the node has a right property, call the helper function with the right property on the node
+    // 4. Invoke the helper function with the current variable
+    // 5. Return the array of values
+    DFSPostOrder() {
+        var data = [];  // 1.
+        var current = this.root;    // 2. (not necessary, but setting a current allows you to specify another node to start from if you want)
+        // 3.
+        function traverse(node) {
+            if (node.left) traverse(node.left); // 3a.
+            data.push(node);    // 3b.
+            if (node.right) traverse(node.right);   // 3c.
         }
         traverse(current);  // 4.
         return data;    // 5.
