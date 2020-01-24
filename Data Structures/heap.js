@@ -38,6 +38,61 @@ class MaxBinaryHeap {
             idx = parentIdx;
         }
     }
+    // extractMax() pseudocode:
+    // 1. Swap the first value in the values property with the last one
+    // 2. pop() from the values property, so you can return the value at the end
+    // 3. Have the new root "sink down" to the correct spot
+    // 4. Your parent index starts at 0 (the root)
+    // 4a. Check if it's not out of bounds
+    // 5. Find the index of the left child: 2 * index + 1 (make sure its not out of bounds)
+    // 6. Find the index of the right child: 2 * index + 2 (make sure its not out of bounds)
+    // 7. If the left or right child is greater than the element, swap. 
+    // 7a. If both left and right children are larger, swap the largest child.
+    // 8. The child index you swapped to now becomes the new parent index
+    // 9. Keep looping and swapping until neither child is larger than the element
+    // 10. Return the old root
+    extractMax() {
+        // 1.
+        const max = this.values[0]; // Store the value of max
+        const end = this.values.pop();  // 2.
+        max = end;
+        this.sinkDown();    // 3.
+        return max; // 10.
+    }
+    sinkDown() {
+        let idx = 0;    // 4.
+        const length = this.values.length;
+        const element = this.values[0];
+        while (true) {  // 9.
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let leftChild, rightChild;
+            let swap = null;
+
+            if (leftChildIdx < length) {    // 4a.
+                leftChild = this.values[leftChildIdx];  // 5.
+                // 7.
+                if (leftchild > element) {
+                    swap = leftChildIdx;
+                }
+            }
+            if (rightChildIdx < length) {    // 4a.
+                rightChild = this.values[rightChildIdx];  // 6.
+                // 7.
+                // 7a.
+                if (
+                    (swap === null && rightChild > element) ||
+                    (swap !== null && rightChild > leftChild)
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+            if (swap === null) break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;   // 8.
+        }
+    }
 }
 
 let heap = new MaxBinaryHeap();
