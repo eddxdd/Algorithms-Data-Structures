@@ -55,8 +55,10 @@ class MaxBinaryHeap {
         // 1.
         const max = this.values[0]; // Store the value of max
         const end = this.values.pop();  // 2.
-        this.values[0] = end;
-        this.sinkDown();    // 3.
+        if (this.values.length > 0) {   // *Edge case: only run the code if there's something in the array
+            this.values[0] = end;
+            this.sinkDown();    // 3.
+        }
         return max; // 10.
     }
     sinkDown() {
