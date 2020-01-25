@@ -40,17 +40,29 @@ class HashTable {
     // get() pseudocode:
     // 1. Accepts a key
     // 2. Hashes a key
-    // 3. Retrieve the key-value pair in the hash table
-    get(key) {
-
+    // 3. Retrieve the key-value pair in the hash table (If there's a value at index. Then loop through the index to find the sub arrays.)
+    // 4. If there's nothing at index, return undefined
+    get(key) {  // 1.
+        let index = this._hash(key);    // 2.
+        // 3.
+        if (this.keyMap[index]) {
+            for (let i = 0; i < this.keyMap[index].length; i++) {
+                if (this.keyMap[index][i][0] === key) {  // [0] is the key, so [1] would be the value [key,value]
+                    return this.keyMap[index][i][1];
+                }
+            }
+        }
+        return undefined;   // 4.
     }
 }
 
 let ht = new HashTable(17);
-console.log(ht.set("maroon","#800000"));
-console.log(ht.set("yellow","#FFFF00"));
-console.log(ht.set("olive","#808000"));
-console.log(ht.set("salmon","#FA8072"));
-console.log(ht.set("lightcoral","#F08080"));
-console.log(ht.set("mediumvioletred","#C71585"));
-console.log(ht.set("plum","#DDA0DD"));
+ht.set("maroon","#800000")
+ht.set("yellow","#FFFF00")
+ht.set("olive","#808000")
+ht.set("salmon","#FA8072")
+ht.set("lightcoral","#F08080")
+ht.set("mediumvioletred","#C71585")
+ht.set("plum","#DDA0DD")
+
+console.log(ht.get("maroon"));
