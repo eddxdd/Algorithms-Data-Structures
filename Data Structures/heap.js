@@ -6,8 +6,6 @@
 // Formula to find children: left side (2n+1) right side (2n+2)
 // Formula to find parent: (n-1)/2
 
-
-
 class MaxBinaryHeap {
     constructor() {
         this.values = [41,39,33,18,27,12,55]; // Simply initializing the array already
@@ -95,16 +93,14 @@ class MaxBinaryHeap {
             idx = swap;   // 8.
         }
     }
+    //
+    // 1. Write a min binary heap - lower number means higher priority.
+    // 2. Each node has a val and a priority. Use the priority to build the heap.
+    // 3. Enqueue method accepts a value and priority, makes a new node, and puts it in the right spot based off of its priority.
+    // 4. Dequeue method removes root element, returns it, and rearranges heap using priority.
 }
 
 let heap = new MaxBinaryHeap();
-heap.insert(41);
-heap.insert(39);
-heap.insert(33);
-heap.insert(18);
-heap.insert(27);
-heap.insert(12);
-heap.insert(55);
 
 console.log(heap.extractMax());
 // [41,39,33,18,27,12,55]
