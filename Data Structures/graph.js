@@ -120,7 +120,7 @@ class Graph {
         const stack = [start];   // 2.  5. (5. because we're also initializing it to start here)
         const result = [];  // 3.
         const visited = {}; // 4.
-        let currentVertex;  // * Declare it here so we don't have to redefine it each time through the loop
+        let currentVertex;  // * Initialize it here so we don't have to redefine it each time through the loop
 
         visited[start] = true;  // 5.
         // 6.
@@ -138,6 +138,26 @@ class Graph {
             });
         }
         return result;  // 8.
+    }
+    // 1. This function should accept a starting vertex
+    // 2. Create a queue (can be an array) and place the starting vertex in it
+    // 3. Create an array to store the nodes visited
+    // 4. Create an object to store nodes visited
+    // 5. Mark the starting vertex as visited
+    // 6. Loop as long as there is anything in the queue
+    // 7. Remove the first vertex from the queue and push it into the array that stores nodes visited
+    // 8. Loop over each vertex in the adjacency list for the vertex you are visiting
+    // 9. If it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
+    // 10. Once you have finished looping, return the array of visited nodes
+    breadthFirst(start) {
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
+
+        while (queue.length) {
+            
+        }
     }
 }
 
