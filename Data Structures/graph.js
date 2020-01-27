@@ -149,15 +149,28 @@ class Graph {
     // 8. Loop over each vertex in the adjacency list for the vertex you are visiting
     // 9. If it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
     // 10. Once you have finished looping, return the array of visited nodes
-    breadthFirst(start) {
-        const queue = [start];
-        const result = [];
-        const visited = {};
+    breadthFirst(start) {   // 1.
+        const queue = [start];  // 2.
+        const result = [];  // 3.
+        const visited = {}; // 4.
         let currentVertex;
+        visited[start] = true;
 
+        // 6.
         while (queue.length) {
-            
+            currentVertex = queue.shift();
+            result.push(currentVertex); // 7.
+
+            // 8.
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                // 9.
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            });
         }
+        return result;  // 10.
     }
 }
 
