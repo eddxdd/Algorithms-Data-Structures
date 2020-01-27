@@ -33,6 +33,7 @@ function fib(n, memo=[undefined,1,1]) {
 // Tabulation: Store the result of a previous result in a "table" (usually an array)
 // Usually done with iteration
 // Better space complexity can be achieved using tabulation
+// Big O: O(n)
 // function fib(n) {
 //     if (n <= 2) return 1;
 //     var fibNums = [0,1,1];
