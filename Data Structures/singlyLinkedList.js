@@ -58,6 +58,7 @@ class SinglyLinkedList {
         var current = this.head;
         var newTail = current;
         while (current.next) {  // 2. While there is a next
+            // Set newtail to current, then move current forward
             newTail = current;
             current = current.next;
         }
