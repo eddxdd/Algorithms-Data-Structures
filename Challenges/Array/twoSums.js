@@ -5,6 +5,7 @@
 // return [0, 1].
 
 // Brute Force (slower)
+// Time: O(n^2) Space: O(1)
 function twoSums(nums, target) {
     for(var i = 0; i< nums.length; i++){
 		// eg. nums[i] === 3, target === 7, the complement will be 4
@@ -21,6 +22,7 @@ function twoSums(nums, target) {
 };
 
 // Hash (much faster)
+// Time: O(n) Space: O(n)
 function twoSumsHash(nums, target) {
     if (nums.length === 2) return [0, 1];
     var hash={};
