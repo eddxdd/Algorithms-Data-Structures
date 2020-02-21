@@ -5,7 +5,25 @@
 // Note 2: Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
 
 var productExceptSelf = function(nums) {
-    f
+    let L = [];
+    let R = [];
+    let output = [];
+
+    L[0] = 1;
+    for (let i = 1; i < nums.length; i++) {
+        L[i] = nums[i-1] * L[i-1];
+    }
+
+    R[nums.length - 1] = 1;
+    for (let j = nums.length-2; j >= 0; j--) {
+        R[j] = nums[j+1] * R[j+1];
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        output[i] = L[i] * R[i];
+    }
+
+    return output;
 };
 
-productExceptSelf([1,2,3,4]);
+console.log(productExceptSelf([1,2,3,4]));
