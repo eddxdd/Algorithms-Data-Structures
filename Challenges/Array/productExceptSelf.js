@@ -4,6 +4,7 @@
 // Note: Please solve it without division and in O(n).
 // Note 2: Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
 
+// Time: O(n) Space: O(n)
 var productExceptSelf = function(nums) {
     let L = [];
     let R = [];
@@ -26,6 +27,7 @@ var productExceptSelf = function(nums) {
     return output;
 };
 
+// Time: O(n) Space: O(1)
 var productExceptSelfOptimal = function(nums) {
     let output = [];
 
