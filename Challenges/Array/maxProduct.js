@@ -3,6 +3,7 @@
 // Output: 6
 // Explanation: [2,3] has the largest product 6.
 
+// Time: O(n) Space: O(1)
 var maxProduct = function(nums) {
     let max = -Infinity;
     let currMax = 1;
