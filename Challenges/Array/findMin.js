@@ -11,4 +11,44 @@ var findMin = function(nums) {
     return Math.min(...nums);
 };
 
+var findMinOptmized = function(nums) {
+    // If the list has just one element, return it
+    if (nums.length === 1) return nums[0];
+
+    // Initializing left and right pointers
+    let left = 0;
+    let right = nums.length - 1;
+
+    // If the right > left, then there's no rotation
+    if (nums[right] > nums[left]) return nums[left];
+
+    // Binary Search
+    while (right >= left) {
+        // Find the mid element
+        let mid = left + (right - left) / 2;
+
+        // If the mid element is greater than the next element then mid+1 is the smallest
+        // This is the inflection point
+        if (nums[mid] > nums[mid+1]) {
+            return nums[mid+1];
+        }
+
+        // If the mid element is lesser than the previous element then mid+1 is the smallest
+        if (nums[mid - 1] > nums[mid]) {
+            return nums[mid];
+        }
+
+        // If the mid element's value is greater than the 0th element
+        // This means the smallest value is somewhere to the right
+        if (nums[mid] > nums[0]) {
+            left = mid + 1;
+        } else {
+            // Else if nums[0] is greater than mid, then the smallest is to the left
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+
 console.log(findMin([3,4,5,1,2]));
+console.log(findMinOptmized([3,4,5,1,2]));

@@ -25,7 +25,7 @@ function twoSums(nums, target) {
 // Time: O(n) Space: O(n)
 function twoSumsHash(nums, target) {
     if (nums.length === 2) return [0, 1];
-    var hash={};
+    let hash={};
     for (let i = 0; i < nums.length; i++) {
         // If it's in the hash, return it. Otherwise create a new key and value.
         if (target-nums[i] in hash) {
