@@ -25,7 +25,7 @@ var findMinOptmized = function(nums) {
     // Binary Search
     while (right >= left) {
         // Find the mid element
-        let mid = left + (right - left) / 2;
+        const mid = Math.floor((left + right) / 2);
 
         // If the mid element is greater than the next element then mid+1 is the smallest
         // This is the inflection point
@@ -50,5 +50,18 @@ var findMinOptmized = function(nums) {
     return -1;
 }
 
+function findMinClean(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        const mid = Math.floor((left + right) / 2);
+        if (nums[mid] > nums[right]) left = mid + 1;
+        else right = mid;
+    }
+    return nums[left];
+}
+
 console.log(findMin([3,4,5,1,2]));
-console.log(findMinOptmized([3,4,5,1,2]));
+console.log(findMinOptmized([2,1]));
+console.log(findMinClean([2,1]));
