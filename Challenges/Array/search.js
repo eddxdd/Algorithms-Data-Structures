@@ -6,21 +6,27 @@
 // Input: nums = [4,5,6,7,0,1,2], target = 0
 // Output: 4
 
+// When you divide the rotated array into two halves, using mid index, at least one of them should remain sorted ALWAYS.
+// If you know one side is sorted, the rest of logic becomes very simple.
+// If one side is sorted, check if the target is in the boundary, otherwise it's on the other side.
+
 var search = function(nums, target) {
-    let start = 0;
-    let end = nums.length - 1;
+    let left = 0;
+    let right = nums.length - 1;
 
-    while (end >= start) {
-        let mid = Math.floor((start + end) / 2);
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
 
-        if (nums[mid] == target) return mid;
+        if (nums[mid] === target) return mid;
 
-        if (nums[mid] >= nums[start]) {
-            if (target >= nums[start] && target < nums[mid]) end = mid - 1;
-            else start = mid + 1;
+        // When dividing the rotated array into two halves, one must be sorted
+        // Check if the left or right side is sorted
+        if (nums[left] <= nums[mid]) {
+            if (nums[left] <= target && target <= nums[mid]) right = mid - 1;   // Target is in the left side
+            else left = mid + 1;
         } else {
-            if (target <= nums[end] && target > nums[mid]) start = mid + 1;
-            else end = mid - 1;
+            if (nums[mid] <= target && target <= nums[right]) left = mid + 1;
+            else right = mid - 1;
         }
     }
     return -1;
