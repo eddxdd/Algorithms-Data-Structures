@@ -20,13 +20,13 @@ var search = function(nums, target) {
         if (nums[mid] === target) return mid;
 
         // When dividing the rotated array into two halves, one must be sorted
-        // Check if the left or right side is sorted
+        // Check if the left side is sorted
         if (nums[left] <= nums[mid]) {
             if (nums[left] <= target && target <= nums[mid]) right = mid - 1;   // Target is in the left side
-            else left = mid + 1;
-        } else {
-            if (nums[mid] <= target && target <= nums[right]) left = mid + 1;
-            else right = mid - 1;
+            else left = mid + 1;    // Target is in the right side
+        } else {    // Else, the right side is sorted
+            if (nums[mid] <= target && target <= nums[right]) left = mid + 1;   // Target is in the right side
+            else right = mid - 1;   // Target is in the left side
         }
     }
     return -1;

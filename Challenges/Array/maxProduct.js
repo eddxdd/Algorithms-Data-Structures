@@ -18,4 +18,4 @@ var maxProduct = function(nums) {
     return max;
 };
 
-console.log(maxProduct([-2,3,-4]));
+console.log(maxProduct([-2]));

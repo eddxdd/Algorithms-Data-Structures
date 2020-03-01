@@ -34,17 +34,17 @@ var findMinOptmized = function(nums) {
             return nums[mid+1];
         }
 
-        // If the mid element is lesser than the previous element then mid+1 is the smallest
+        // If the mid element is lesser than the previous element then mid is the smallest
         if (nums[mid - 1] > nums[mid]) {
             return nums[mid];
         }
 
         // If the mid element's value is greater than the 0th element
-        // This means the smallest value is somewhere to the right
+        // This means the smallest value is somewhere to the right of mid
         if (nums[mid] > nums[0]) {
             left = mid + 1;
         } else {
-            // Else if nums[0] is greater than mid, then the smallest is to the left
+            // Else if nums[0] is greater than mid, then the smallest is to the left of mid
             right = mid - 1;
         }
     }
