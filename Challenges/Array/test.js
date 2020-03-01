@@ -1,40 +1,24 @@
-function productExceptSelf(nums) {
-    let L = [];
-    let R = [];
-    let output = [];
+function findMin(nums) {
+    if (nums.length === 1) return nums[0];
+    
+    let left = 0;
+    let right = nums.length - 1;
 
-    L[0] = 1;
-    for (let i = 1; i < nums.length; i++) {
-        L[i] = L[i-1] * nums[i-1];
+    if (nums[left] < nums[right]) return nums[left];
+
+    while (right >= left) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] > nums[mid+1]) return nums[mid+1];
+        if (nums[mid-1] > nums[mid]) return nums[mid];
+
+        if (nums[mid] > nums[0]) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
-
-    R[nums.length - 1] = 1;
-    for (let j = nums.length-2; j >= 0; j--) {
-        R[j] = R[j+1] * nums[j+1];
-    }
-
-    for (let i = 0; i < nums.length; i++) {
-        output[i] = L[i] * R[i];
-    }
-
-    return output;
+    return -1;
 }
 
-function productExceptSelfOptimal(nums) {
-    let output = [];
-
-    output[0] = 1;
-    for (let i = 1; i < nums.length; i++) {
-        output[i] = output[i-1] * nums[i-1];
-    }
-
-    let R = 1;
-    for (let i = nums.length-1; i >= 0; i--) {
-        output[i] *= R;
-        R *= nums[i];
-    }
-    return output;
-}
-
-console.log(productExceptSelf([1,2,3,4]));
-console.log(productExceptSelfOptimal([1,2,3,4]));
+console.log(findMin([3,4,5,1,2]));
