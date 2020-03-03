@@ -25,7 +25,18 @@ var threeSum = function(nums, target = 0) {
         // Since we already sorted, we can stop here if the current iterator is > target
         if (nums[i] > target) break;
 
-        
+        // If current iterator is the same as previous
+        // Skip to prevent duplicates
+        if (i > 0 && nums[i] === nums[i-1]) continue;
+
+        let j = i + 1;
+        let k = nums.length - 1;
+
+        // Walking j and k towards each other to find all possible values
+        // With i as our anchor value
+        while (j < k) {
+
+        }        
     }
 };
 
