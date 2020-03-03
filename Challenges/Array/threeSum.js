@@ -10,8 +10,23 @@
 
 // Note: The solution set must not contain duplicate triplets.
 
-var threeSum = function(nums) {
-    
+var threeSum = function(nums, target = 0) {
+    const result = [];
+
+    // If there are less than 3 values, return an empty array.
+    if (nums.length < 3) return result;
+
+    // Sort
+    nums = nums.sort((a,b) => a - b);
+
+    // Using i as the anchor as we move through the array
+    // We stop at nums.length - 2to prevent undefined for k
+    for (let i = 0; i < nums.length - 2; i++) {
+        // Since we already sorted, we can stop here if the current iterator is > target
+        if (nums[i] > target) break;
+
+        
+    }
 };
 
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
