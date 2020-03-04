@@ -22,10 +22,10 @@ var search = function(nums, target) {
         // When dividing the rotated array into two halves, one must be sorted
         // Check if the left side is sorted
         if (nums[left] <= nums[mid]) {
-            if (nums[left] <= target && target <= nums[mid]) right = mid - 1;   // Target is in the left side
+            if (target >= nums[left] && target <= nums[mid]) right = mid - 1;   // Target is in the left side
             else left = mid + 1;    // Target is in the right side
         } else {    // Else, the right side is sorted
-            if (nums[mid] <= target && target <= nums[right]) left = mid + 1;   // Target is in the right side
+            if (target >= nums[mid] && target <= nums[right]) left = mid + 1;   // Target is in the right side
             else right = mid - 1;   // Target is in the left side
         }
     }

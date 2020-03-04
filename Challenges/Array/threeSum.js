@@ -20,7 +20,7 @@ var threeSum = function(nums, target = 0) {
     nums = nums.sort((a,b) => a - b);
 
     // Using i as the anchor as we move through the array
-    // We stop at nums.length - 2to prevent undefined for k
+    // We stop at nums.length - 2 to prevent undefined for k
     for (let i = 0; i < nums.length - 2; i++) {
         // Since we already sorted, we can stop here if the current iterator is > target
         if (nums[i] > target) break;
@@ -35,9 +35,30 @@ var threeSum = function(nums, target = 0) {
         // Walking j and k towards each other to find all possible values
         // With i as our anchor value
         while (j < k) {
+            let sum = nums[i] + nums[j] + nums[k];
+            if (sum === target) {
+                result.push([nums[i], nums[j], nums[k]]);
 
-        }        
+                // Skip duplicate
+                while (nums[j] === nums[j+1]) j++;
+                while (nums[k] === nums[k+1]) k++;
+
+                // Move j and k inward
+                j++;
+                k--;
+                continue;
+            }
+            if (sum < target) {
+                j++;
+                continue;
+            }
+            if (sum > target) {
+                k--;
+                continue;
+            }
+        }
     }
+    return result;
 };
 
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
