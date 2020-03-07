@@ -6,4 +6,4 @@ var getSum = function(a, b) {
     
 };
 
-console.log(getSum());
+console.log(getSum(1,2));
