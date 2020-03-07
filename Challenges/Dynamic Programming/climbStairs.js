@@ -8,7 +8,7 @@
 // 1. 1 step + 1 step
 // 2. 2 steps
 
-
+// Time: O(n) Space: O(1)
 var climbStairs = function(n) {
     if (n === 1) return 1;
     
